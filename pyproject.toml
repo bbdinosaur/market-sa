@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "market-sa"
+version = "0.1.0"
+description = "SA score, but with vibes from whether a CRO would actually take the job"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "rdkit>=2026.9.1",
+  "molbloom>=3.0.0",
+  "httpx>=0.27.0",
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.32.0",
+  "jinja2>=3.1.0",
+  "python-multipart>=0.0.9",
+  "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+market-sa = "market_sa.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["market_sa*"]
+
+[tool.setuptools.package-data]
+market_sa = ["templates/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

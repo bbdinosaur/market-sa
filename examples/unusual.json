@@ -1,0 +1,100 @@
+{
+  "molecule": {
+    "input_smiles": "ONN1CCCC1",
+    "canonical_smiles": "ONN1CCCC1",
+    "inchikey": "GNCJFWWZVGYNBX-UHFFFAOYSA-N",
+    "formula": "C4H10N2O",
+    "mw": 102.137,
+    "rdkit_sa": 3.1139
+  },
+  "rdkit_sa": {
+    "score": 3.1139,
+    "kind": "computational_heuristic",
+    "label_zh": "RDKit SA Score（计算启发式，不是市场报价）",
+    "label_en": "RDKit SA Score (computational heuristic, not a market quote)",
+    "direction_zh": "1 = 更易合成，10 = 更难合成",
+    "direction_en": "1 = easier to synthesize, 10 = harder"
+  },
+  "market_sa": {
+    "score": 3.11,
+    "confidence": 0.35,
+    "evidence_class": "computational",
+    "rationale_zh": "没有目录命中、供应商名录或有效人工报价，Market SA 回退为 RDKit SA Score。这只是计算启发式，不是真实市场可合成性或报价。",
+    "rationale_en": "No catalog, vendor, or usable human-quote evidence. Market SA falls back to the RDKit SA Score, labeled computational. This is a heuristic, not a market quote.",
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "n_quotes_used": 0,
+    "score_min": null,
+    "score_max": null,
+    "companies": [],
+    "quote_scores": [],
+    "fx_note_zh": null,
+    "fx_note_en": null,
+    "direction_zh": "1 = 更易合成，10 = 更难合成（与 RDKit SA Score 方向一致）",
+    "direction_en": "1 = easier to synthesize, 10 = harder (same direction as RDKit SA Score)",
+    "details": {
+      "fallback": "rdkit_sa"
+    }
+  },
+  "bloom": {
+    "hits": {
+      "zinc-instock": false,
+      "zinc-instock-mini": false
+    },
+    "errors": {},
+    "descriptions": {
+      "zinc-instock": "ZINC20 instock (9,227,726 mols). FPR of 0.0003. Requires download",
+      "zinc-instock-mini": "ZINC20 instock (9,227,726 mols). FPR of 0.07. Included in package"
+    },
+    "kinds": {
+      "zinc-instock": "purchasability",
+      "zinc-instock-mini": "purchasability"
+    },
+    "any_purchasability_hit": false,
+    "purchasability_hits": [],
+    "note_zh": "True 表示可能可购（布隆过滤器有很小的假阳性率），False 表示不在该目录中。SureChEMBL 是专利文献库，不是商店。",
+    "note_en": "True means the molecule may be purchasable (small false-positive rate); False means it is not in that catalog. SureChEMBL is a patent database, not a storefront."
+  },
+  "pubchem": {
+    "ok": true,
+    "cid": 54495449,
+    "cids": [
+      54495449
+    ],
+    "title": "Pyrrolidine hydroxylamine",
+    "iupac_name": "N-pyrrolidin-1-ylhydroxylamine",
+    "formula": "C4H10N2O",
+    "mw": "102.14",
+    "inchikey": "GNCJFWWZVGYNBX-UHFFFAOYSA-N",
+    "vendors": [],
+    "vendor_count": 0,
+    "listing_count": 0,
+    "prices_available": false,
+    "lead_times_available": false,
+    "note_zh": "PubChem 供应商名录通常不提供价格或货期。本工具不会编造价格。",
+    "note_en": "PubChem vendor listings usually do not include prices or lead times. This tool does not invent prices.",
+    "compound_url": "https://pubchem.ncbi.nlm.nih.gov/compound/54495449",
+    "warnings": [],
+    "vendors_preview": []
+  },
+  "commercial": {
+    "configured": [],
+    "offers": [],
+    "errors": [],
+    "note_zh": "仅在设置了 MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY 时查询。未设置则静默跳过。不会提交询价或订单，也不会在日志中打印密钥。",
+    "note_en": "Queried only when MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY are set. Otherwise skipped silently. No quote forms or orders are submitted; secrets are never printed."
+  },
+  "human_quotes": {
+    "n": 0,
+    "quotes": []
+  },
+  "warnings": [
+    "Market SA 目前只回退到了 RDKit SA（计算启发式），没有市场证据。请勿把它当作真实报价。"
+  ],
+  "honesty": {
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "disclaimer_zh": "该分数回退为 RDKit SA Score，只是计算启发式，不是真实市场可合成性，更不是报价。",
+    "disclaimer_en": "This score falls back to RDKit SA Score, a computational heuristic — not real-world market synthesizability, and not a quote."
+  }
+}

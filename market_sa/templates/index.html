@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MarketSA · 市场可合成性评估</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --ink: #1c1a16;
+      --muted: #5f584c;
+      --card: #fffdf8;
+      --line: #ddd4c4;
+      --accent: #0f5c4c;
+      --accent-soft: #d8efe8;
+      --warn: #8a3b12;
+      --warn-soft: #f8e6d8;
+      --hard: #7a1f2b;
+      --easy: #0f5c4c;
+      --mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+      --sans: "Source Han Sans SC", "Noto Sans SC", "Segoe UI", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, #e8f3ee 0%, transparent 55%),
+        radial-gradient(900px 400px at 100% 0%, #f6e9d8 0%, transparent 50%),
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.5;
+    }
+    header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 0.5rem;
+    }
+    header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.85rem;
+      letter-spacing: 0.01em;
+    }
+    header p { margin: 0.2rem 0; color: var(--muted); max-width: 52rem; }
+    .badge {
+      display: inline-block;
+      background: var(--warn-soft);
+      color: var(--warn);
+      border: 1px solid #efd0b8;
+      border-radius: 999px;
+      padding: 0.15rem 0.7rem;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem 3rem;
+      display: grid;
+      gap: 1rem;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      box-shadow: 0 1px 0 rgba(28,26,22,0.03);
+    }
+    .row { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: end; }
+    label { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.3rem; }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.65rem 0.75rem;
+      font: inherit;
+      background: #fff;
+      color: var(--ink);
+    }
+    textarea { min-height: 4.5rem; font-family: var(--mono); font-size: 0.92rem; }
+    button {
+      border: none;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      background: var(--accent);
+      color: white;
+      font: inherit;
+      cursor: pointer;
+    }
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    button:disabled { opacity: 0.55; cursor: wait; }
+    .grow { flex: 1 1 320px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 820px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+    .structure {
+      background: #faf7f1;
+      border: 1px dashed var(--line);
+      border-radius: 12px;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .structure svg { max-width: 100%; height: auto; }
+    .score-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+    }
+    .metric {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+      background: #fff;
+    }
+    .metric .label { color: var(--muted); font-size: 0.82rem; }
+    .metric .value {
+      font-size: 2rem;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      margin-top: 0.15rem;
+    }
+    .metric.market .value { color: var(--accent); }
+    .metric.rdkit .value { color: #3d4a63; }
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 0.1rem 0.55rem;
+      font-size: 0.78rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #b9dccd;
+    }
+    .pill.warn { background: var(--warn-soft); color: var(--warn); border-color: #efd0b8; }
+    .pill.hard { background: #f7e1e5; color: var(--hard); border-color: #e8bcc4; }
+    .muted { color: var(--muted); }
+    .mono { font-family: var(--mono); font-size: 0.9rem; word-break: break-all; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    th, td {
+      text-align: left;
+      padding: 0.45rem 0.4rem;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 600; font-size: 0.8rem; }
+    .warn-list { margin: 0.4rem 0 0; padding-left: 1.1rem; color: var(--warn); }
+    details { margin-top: 0.5rem; }
+    details summary { cursor: pointer; color: var(--accent); }
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.65rem;
+    }
+    .form-grid .span-2 { grid-column: span 2; }
+    @media (max-width: 640px) { .form-grid .span-2 { grid-column: span 1; } }
+    pre.rfq {
+      white-space: pre-wrap;
+      background: #1c1a16;
+      color: #f4f1ea;
+      border-radius: 12px;
+      padding: 1rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      max-height: 360px;
+      overflow: auto;
+    }
+    .hidden { display: none !important; }
+    footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>MarketSA</h1>
+    <p>输入 SMILES，得到带证据分级的市场可合成性分数（Market SA）。方向：<strong>1 = 更易合成，10 = 更难合成</strong>（与 RDKit SA Score 一致）。</p>
+    <p>本工具查询公开目录与本地人工报价账本；<strong>不会向任何公司自动发送询价、表单或订单</strong>。询价草稿仅供你自行复制发送。</p>
+    <div class="badge">研究工具 · 不是真实 CRO 报价平台 · 不编造价格</div>
+  </header>
+
+  <main>
+    <section class="card">
+      <div class="row">
+        <div class="grow">
+          <label for="smiles">SMILES</label>
+          <textarea id="smiles" placeholder="例如：CCO 或 CC(=O)Oc1ccccc1C(=O)O"></textarea>
+        </div>
+        <div>
+          <label>&nbsp;</label>
+          <button id="btn-eval" type="button">评估</button>
+        </div>
+      </div>
+      <p class="muted" style="margin:0.6rem 0 0">示例：
+        <a href="#" data-ex="CCO">乙醇 CCO</a> ·
+        <a href="#" data-ex="CC(=O)Oc1ccccc1C(=O)O">阿司匹林</a> ·
+        <a href="#" data-ex="ONN1CCCC1">难购 ONN1CCCC1</a>
+      </p>
+    </section>
+
+    <section id="error" class="card hidden" style="border-color:#e8bcc4;background:#fff7f8;color:var(--hard)"></section>
+
+    <section id="result" class="hidden">
+      <div class="card grid-2">
+        <div>
+          <div class="structure" id="structure"></div>
+        </div>
+        <div>
+          <div class="score-box">
+            <div class="metric market">
+              <div class="label">Market SA</div>
+              <div class="value" id="msa-score">—</div>
+              <div><span class="pill" id="msa-class">—</span>
+                <span class="muted" id="msa-conf"></span></div>
+            </div>
+            <div class="metric rdkit">
+              <div class="label">RDKit SA（计算启发式）</div>
+              <div class="value" id="rdkit-score">—</div>
+              <div class="muted">不是市场报价</div>
+            </div>
+          </div>
+          <p id="msa-rationale" class="muted" style="margin:0.9rem 0 0.3rem"></p>
+          <p id="msa-disclaimer" style="margin:0.2rem 0 0"></p>
+          <div id="mol-meta" class="mono muted" style="margin-top:0.8rem"></div>
+          <ul id="warnings" class="warn-list"></ul>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3 style="margin:0 0 0.5rem">公开市场信号</h3>
+        <div id="bloom-box" class="muted"></div>
+        <div id="pubchem-box" style="margin-top:0.7rem"></div>
+        <div id="commercial-box" class="muted" style="margin-top:0.5rem"></div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <div class="row" style="justify-content:space-between;align-items:center">
+          <h3 style="margin:0">人工报价账本（Human-in-the-loop）</h3>
+          <span class="muted">粘贴真实回复后登记 · 永不自动外发</span>
+        </div>
+        <div id="quotes-box" style="margin-top:0.6rem"></div>
+
+        <h4 style="margin:1rem 0 0.5rem">登记一条报价 / 拒单</h4>
+        <div class="form-grid" id="quote-form">
+          <div><label>公司</label><input id="q-company" placeholder="例如：某外包合成公司" /></div>
+          <div>
+            <label>决策</label>
+            <select id="q-decision">
+              <option value="accepted">accepted 接单</option>
+              <option value="declined">declined 拒单</option>
+              <option value="conditional">conditional 有条件</option>
+              <option value="no_response">no_response 无回复</option>
+            </select>
+          </div>
+          <div>
+            <label>原因码（拒单可选）</label>
+            <select id="q-reason">
+              <option value="">—</option>
+              <option value="chemically_infeasible">chemically_infeasible 化学不可行</option>
+              <option value="out_of_scope">out_of_scope 业务范围外</option>
+              <option value="capacity">capacity 产能/排期</option>
+              <option value="other">other 其他</option>
+            </select>
+          </div>
+          <div><label>价格</label><input id="q-price" type="number" step="any" /></div>
+          <div><label>货币</label><input id="q-currency" value="USD" /></div>
+          <div><label>数量</label><input id="q-amount" type="number" step="any" value="1" /></div>
+          <div>
+            <label>单位</label>
+            <select id="q-unit">
+              <option value="g">g</option>
+              <option value="mg">mg</option>
+              <option value="kg">kg</option>
+              <option value="ug">ug</option>
+              <option value="mmol">mmol</option>
+            </select>
+          </div>
+          <div><label>纯度</label><input id="q-purity" placeholder="例如 98%" /></div>
+          <div><label>货期（天）</label><input id="q-lead" type="number" step="1" /></div>
+          <div><label>报价日期</label><input id="q-date" type="date" /></div>
+          <div class="span-2"><label>备注</label><input id="q-notes" /></div>
+          <div class="span-2"><label>原始回复文本（可选）</label><textarea id="q-raw" style="min-height:3rem"></textarea></div>
+        </div>
+        <div class="row" style="margin-top:0.75rem">
+          <button id="btn-add-quote" type="button" class="secondary">保存到本地账本</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <div class="row" style="justify-content:space-between;align-items:center">
+          <h3 style="margin:0">询价草稿 RFQ</h3>
+          <div class="row">
+            <button id="btn-rfq" type="button" class="secondary">生成草稿</button>
+            <button id="btn-copy-rfq" type="button" class="secondary">复制</button>
+            <button id="btn-dl-rfq" type="button" class="secondary">下载 .txt</button>
+          </div>
+        </div>
+        <p class="muted">草稿含中英双语。请你自行通过邮件/门户发送；MarketSA 不会替你发送。</p>
+        <pre class="rfq hidden" id="rfq-box"></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    MarketSA v0.1 · 本地研究工具 · 缓存与报价账本保存在本机 data/ 目录 ·
+    可选密钥：MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY（未设置则跳过）
+  </footer>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    let currentSmiles = "";
+    let lastEval = null;
+    let lastRfq = "";
+
+    function evidencePill(cls) {
+      const el = $("msa-class");
+      el.className = "pill";
+      const map = {
+        human_quote: ["人工报价", ""],
+        catalog_priced: ["目录标价", ""],
+        catalog_listed: ["目录命中（无价）", "warn"],
+        computational: ["仅计算启发式", "hard"],
+      };
+      const [label, kind] = map[cls] || [cls || "—", "warn"];
+      if (kind) el.classList.add(kind);
+      el.textContent = label + (cls ? ` · ${cls}` : "");
+    }
+
+    function showError(msg) {
+      const box = $("error");
+      box.textContent = msg;
+      box.classList.remove("hidden");
+    }
+    function clearError() { $("error").classList.add("hidden"); }
+
+    function renderVendors(pc) {
+      if (!pc || pc.error) {
+        return `<p class="muted">PubChem：${pc && pc.error ? pc.error : "无数据"}</p>`;
+      }
+      if (!pc.cid) return `<p class="muted">PubChem：未找到 CID</p>`;
+      const names = (pc.vendors || []).slice(0, 20).map(v => `${v.name} (${v.n_listings})`).join(" · ");
+      const more = (pc.vendor_count || 0) > 20 ? ` … 共 ${pc.vendor_count} 家` : "";
+      return `
+        <div><strong>PubChem</strong> CID ${pc.cid}
+          ${pc.title ? " · " + pc.title : ""}
+          · <a href="${pc.compound_url}" target="_blank" rel="noopener">打开页面</a>
+        </div>
+        <div class="muted">供应商 ${pc.vendor_count || 0} 家 / 条目 ${pc.listing_count || 0} ·
+          通常<strong>没有价格或货期</strong>（${pc.note_zh || "不会编造"}）</div>
+        <div style="margin-top:0.35rem">${names || "无 Chemical Vendors"}${more}</div>
+      `;
+    }
+
+    function renderQuotes(quotes) {
+      if (!quotes || !quotes.length) {
+        $("quotes-box").innerHTML = `<p class="muted">尚无本分子的人工报价。收到真实回复后可在下方登记。</p>`;
+        return;
+      }
+      const rows = quotes.map(q => `
+        <tr>
+          <td>#${q.id}<br/><button data-del="${q.id}" class="secondary" style="padding:0.2rem 0.45rem;font-size:0.75rem;margin-top:0.25rem">删除</button></td>
+          <td>${q.company}<div class="muted">${q.quoted_date || ""}</div></td>
+          <td>${q.decision}${q.reason_code ? "<div class='muted'>"+q.reason_code+"</div>" : ""}</td>
+          <td>${q.price != null ? (q.price + " " + (q.currency||"")) : "—"}</td>
+          <td>${q.amount != null ? (q.amount + " " + (q.unit||"")) : "—"}</td>
+          <td>${q.lead_days != null ? q.lead_days + " 天" : "—"}</td>
+          <td>${q.purity || "—"}</td>
+          <td class="muted">${(q.notes || "").slice(0,80)}</td>
+        </tr>`).join("");
+      $("quotes-box").innerHTML = `
+        <table>
+          <thead><tr>
+            <th>ID</th><th>公司</th><th>决策</th><th>价格</th><th>数量</th><th>货期</th><th>纯度</th><th>备注</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>`;
+      $("quotes-box").querySelectorAll("[data-del]").forEach(btn => {
+        btn.addEventListener("click", async () => {
+          if (!confirm("删除这条本地报价？")) return;
+          await fetch(`/api/quotes/${btn.dataset.del}`, { method: "DELETE" });
+          await runEval(currentSmiles);
+        });
+      });
+    }
+
+    function render(result) {
+      lastEval = result;
+      $("result").classList.remove("hidden");
+      const mol = result.molecule;
+      const msa = result.market_sa;
+      $("structure").innerHTML = mol.structure_svg || "<span class='muted'>无结构图</span>";
+      $("msa-score").textContent = msa.score;
+      evidencePill(msa.evidence_class);
+      $("msa-conf").textContent = `置信度 ${msa.confidence}`;
+      $("rdkit-score").textContent = result.rdkit_sa.score;
+      $("msa-rationale").textContent = msa.rationale_zh || "";
+      $("msa-disclaimer").textContent = (result.honesty && result.honesty.disclaimer_zh) || "";
+      $("mol-meta").textContent =
+        `Canonical: ${mol.canonical_smiles}\nInChIKey: ${mol.inchikey}\nFormula: ${mol.formula} · MW ${mol.mw}`;
+      const warns = result.warnings || [];
+      $("warnings").innerHTML = warns.map(w => `<li>${w}</li>`).join("");
+
+      const bloom = result.bloom || {};
+      const hitLines = Object.entries(bloom.hits || {}).map(([k,v]) => {
+        const kind = (bloom.kinds||{})[k] || "";
+        return `<code>${k}</code>${kind?` [${kind}]`:""}: ${v ? "True（可能可购）" : "False"}`;
+      });
+      $("bloom-box").innerHTML = hitLines.length
+        ? `<div><strong>molbloom</strong> · ${hitLines.join(" · ")}</div><div class="muted">${bloom.note_zh||""}</div>`
+        : `<div class="muted">molbloom：无结果</div>`;
+
+      $("pubchem-box").innerHTML = renderVendors(result.pubchem || {});
+      const com = result.commercial || {};
+      $("commercial-box").textContent = (com.configured && com.configured.length)
+        ? `可选商业目录已配置：${com.configured.join(", ")} · offers ${ (com.offers||[]).length }`
+        : "可选商业目录未配置密钥（MOLPORT / MCULE / CHEMSPACE），已跳过。";
+
+      renderQuotes((result.human_quotes && result.human_quotes.quotes) || []);
+    }
+
+    async function runEval(smiles) {
+      clearError();
+      currentSmiles = smiles;
+      $("btn-eval").disabled = true;
+      try {
+        const resp = await fetch("/api/eval", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ smiles }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.detail || "评估失败");
+        render(data);
+      } catch (err) {
+        showError(String(err.message || err));
+        $("result").classList.add("hidden");
+      } finally {
+        $("btn-eval").disabled = false;
+      }
+    }
+
+    $("btn-eval").addEventListener("click", () => {
+      const s = $("smiles").value.trim();
+      if (!s) return showError("请输入 SMILES");
+      runEval(s);
+    });
+
+    document.querySelectorAll("[data-ex]").forEach(a => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        $("smiles").value = a.dataset.ex;
+        runEval(a.dataset.ex);
+      });
+    });
+
+    $("btn-add-quote").addEventListener("click", async () => {
+      if (!currentSmiles) return showError("请先评估一个分子");
+      const body = {
+        smiles: currentSmiles,
+        company: $("q-company").value.trim(),
+        decision: $("q-decision").value,
+        reason_code: $("q-reason").value || null,
+        price: $("q-price").value === "" ? null : Number($("q-price").value),
+        currency: $("q-currency").value || "USD",
+        amount: $("q-amount").value === "" ? null : Number($("q-amount").value),
+        unit: $("q-unit").value,
+        purity: $("q-purity").value || null,
+        lead_days: $("q-lead").value === "" ? null : Number($("q-lead").value),
+        quoted_date: $("q-date").value || null,
+        notes: $("q-notes").value || null,
+        raw_reply: $("q-raw").value || null,
+      };
+      if (!body.company) return showError("请填写公司名称");
+      clearError();
+      const resp = await fetch("/api/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await resp.json();
+      if (!resp.ok) return showError(data.detail || "保存失败");
+      render(data.evaluation);
+    });
+
+    async function loadRfq() {
+      if (!currentSmiles) return showError("请先评估一个分子");
+      const resp = await fetch(`/api/rfq?smiles=${encodeURIComponent(currentSmiles)}`);
+      const data = await resp.json();
+      if (!resp.ok) return showError(data.detail || "生成失败");
+      lastRfq = data.drafts.combined;
+      $("rfq-box").textContent = lastRfq;
+      $("rfq-box").classList.remove("hidden");
+    }
+    $("btn-rfq").addEventListener("click", loadRfq);
+    $("btn-copy-rfq").addEventListener("click", async () => {
+      if (!lastRfq) await loadRfq();
+      if (!lastRfq) return;
+      await navigator.clipboard.writeText(lastRfq);
+      alert("已复制到剪贴板（请自行发送，工具不会外发）");
+    });
+    $("btn-dl-rfq").addEventListener("click", () => {
+      if (!currentSmiles) return showError("请先评估一个分子");
+      window.location = `/api/rfq?smiles=${encodeURIComponent(currentSmiles)}&download=1`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,645 @@
+{
+  "molecule": {
+    "input_smiles": "CCO",
+    "canonical_smiles": "CCO",
+    "inchikey": "LFQSCWFLJHTTHZ-UHFFFAOYSA-N",
+    "formula": "C2H6O",
+    "mw": 46.069,
+    "rdkit_sa": 1.9803
+  },
+  "rdkit_sa": {
+    "score": 1.9803,
+    "kind": "computational_heuristic",
+    "label_zh": "RDKit SA Score（计算启发式，不是市场报价）",
+    "label_en": "RDKit SA Score (computational heuristic, not a market quote)",
+    "direction_zh": "1 = 更易合成，10 = 更难合成",
+    "direction_en": "1 = easier to synthesize, 10 = harder"
+  },
+  "market_sa": {
+    "score": 2.69,
+    "confidence": 0.733,
+    "evidence_class": "catalog_listed",
+    "rationale_zh": "公开目录或供应商名录中出现了该分子，但没有价格或货期。给出偏易合成的中间分数，并明确这不是报价。",
+    "rationale_en": "The molecule appears in a public catalog or vendor list, but no price or lead time is available. A mid-easy default is used. This is not a quote. 41 unique PubChem chemical vendors, no prices; score in the 2.5–3.5 band (more vendors → slightly easier / higher confidence).",
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "n_quotes_used": 0,
+    "score_min": null,
+    "score_max": null,
+    "companies": [],
+    "quote_scores": [],
+    "fx_note_zh": null,
+    "fx_note_en": null,
+    "direction_zh": "1 = 更易合成，10 = 更难合成（与 RDKit SA Score 方向一致）",
+    "direction_en": "1 = easier to synthesize, 10 = harder (same direction as RDKit SA Score)",
+    "details": {
+      "catalog_listed_reason": "41 unique PubChem chemical vendors, no prices; score in the 2.5–3.5 band (more vendors → slightly easier / higher confidence)."
+    }
+  },
+  "bloom": {
+    "hits": {
+      "zinc-instock": true,
+      "zinc-instock-mini": true
+    },
+    "errors": {},
+    "descriptions": {
+      "zinc-instock": "ZINC20 instock (9,227,726 mols). FPR of 0.0003. Requires download",
+      "zinc-instock-mini": "ZINC20 instock (9,227,726 mols). FPR of 0.07. Included in package"
+    },
+    "kinds": {
+      "zinc-instock": "purchasability",
+      "zinc-instock-mini": "purchasability"
+    },
+    "any_purchasability_hit": true,
+    "purchasability_hits": [
+      "zinc-instock",
+      "zinc-instock-mini"
+    ],
+    "note_zh": "True 表示可能可购（布隆过滤器有很小的假阳性率），False 表示不在该目录中。SureChEMBL 是专利文献库，不是商店。",
+    "note_en": "True means the molecule may be purchasable (small false-positive rate); False means it is not in that catalog. SureChEMBL is a patent database, not a storefront."
+  },
+  "pubchem": {
+    "ok": true,
+    "cid": 702,
+    "cids": [
+      702
+    ],
+    "title": "Ethanol",
+    "iupac_name": "ethanol",
+    "formula": "C2H6O",
+    "mw": "46.07",
+    "inchikey": "LFQSCWFLJHTTHZ-UHFFFAOYSA-N",
+    "vendors": [
+      {
+        "name": "LGC Standards",
+        "n_listings": 196,
+        "registry_ids": [
+          "AC-WH02-015",
+          "AC-WH02-030",
+          "AC-WH20-115",
+          "BCR-651",
+          "BCR-652",
+          "BCR-653",
+          "DRE-C13223000",
+          "DRE-C13223000-10ML"
+        ],
+        "source_url": "https://www.lgcstandards.com/US/en/",
+        "record_urls": [
+          "https://www.lgcstandards.com/US/en/p/AC-WH02-015",
+          "https://www.lgcstandards.com/US/en/p/AC-WH02-030",
+          "https://www.lgcstandards.com/US/en/p/AC-WH20-115",
+          "https://www.lgcstandards.com/US/en/p/BCR-651",
+          "https://www.lgcstandards.com/US/en/p/BCR-652"
+        ],
+        "registry_ids_omitted": 188
+      },
+      {
+        "name": "Sigma-Aldrich",
+        "n_listings": 145,
+        "registry_ids": [
+          "02483_SIAL",
+          "02851_SIAL",
+          "02856_SIGALD",
+          "02857_SIGALD",
+          "02858_SIGALD",
+          "02865_SIAL",
+          "02870_SIGALD",
+          "02882_SIGALD"
+        ],
+        "source_url": "http://www.sigmaaldrich.com",
+        "record_urls": [
+          "https://www.sigmaaldrich.com/catalog/product/sial/02483?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sial/02851?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02856?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02857?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02858?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral"
+        ],
+        "registry_ids_omitted": 137
+      },
+      {
+        "name": "Thermo Fisher Scientific",
+        "n_listings": 44,
+        "registry_ids": [
+          "GID_900000000129884",
+          "GID_900000000185747",
+          "GID_900000000185756",
+          "GID_900000000255397",
+          "GID_900000000302091",
+          "GID_900000000302243",
+          "GID_900000000302244",
+          "GID_900000000302245"
+        ],
+        "source_url": "https://www.thermofisher.com/us/en/home.html",
+        "record_urls": [
+          "https://www.thermofisher.com/order/catalog/product/300680050",
+          "https://www.thermofisher.com/order/catalog/product/166320250",
+          "https://www.thermofisher.com/order/catalog/product/166321000",
+          "https://www.thermofisher.com/order/catalog/product/300680010",
+          "https://www.thermofisher.com/order/catalog/product/611050040"
+        ],
+        "registry_ids_omitted": 36
+      },
+      {
+        "name": "CATO Research Chemicals Inc.",
+        "n_listings": 30,
+        "registry_ids": [
+          "CCEM500540",
+          "CZ-1004",
+          "LCEM501352-WA",
+          "LCEM501353-WA",
+          "LCEM501354-WA",
+          "LCEM501355-WA",
+          "LCEM501356-WA",
+          "LCEM501367-WA"
+        ],
+        "source_url": "https://en.cato-chem.com/",
+        "record_urls": [
+          "https://en.cato-chem.com/goodsDetail/CATO/CCEM500540",
+          "https://en.cato-chem.com/goodsDetail/CATO/CZ-1004",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501352-WA",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501353-WA",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501354-WA"
+        ],
+        "registry_ids_omitted": 22
+      },
+      {
+        "name": "Molekula Group",
+        "n_listings": 13,
+        "registry_ids": [
+          "MOL-24623991",
+          "MOL-90005199",
+          "MOL-90018612",
+          "MOL-90023102",
+          "MOL-90023191",
+          "MOL-90027444",
+          "MOL-90033572",
+          "MOL-90035378"
+        ],
+        "source_url": "https://molekula.com/",
+        "record_urls": [
+          "https://molekula.com/product/ethanol-absolute-molecular-biology-grade",
+          "https://molekula.com/product/ethanol-absolute-p-a",
+          "https://molekula.com/product/ethanol",
+          "https://molekula.com/product/ethanol-denatured",
+          "https://molekula.com/product/industrial-denatured-alcohol-ida-99"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "Alfa Chemistry",
+        "n_listings": 6,
+        "registry_ids": [
+          "ACM64175",
+          "ACM64175-1",
+          "ACMA00008918",
+          "ACMA00027211",
+          "APS005477",
+          "CF-HS-001"
+        ],
+        "source_url": "https://eco.alfa-chemistry.com",
+        "record_urls": [
+          "https://eco.alfa-chemistry.com/product/ethanol-cas-64-17-5-372044.html",
+          "https://materials.alfachemic.com/product/ethanol-99-5-cas-64-17-5-393285.html",
+          "https://lipids.alfa-chemistry.com/product/alcohol-305027.html",
+          "https://eco.alfa-chemistry.com/product/instant-hand-sanitizer-376125.html",
+          "https://reagents.alfa-chemistry.com/product/alcohol-aldehyde-free-59266.html"
+        ]
+      },
+      {
+        "name": "VladaChem",
+        "n_listings": 5,
+        "registry_ids": [
+          "VL142206",
+          "VL280185-1L",
+          "VL281145-100ML",
+          "VL281226-1L",
+          "VL282655-1L"
+        ],
+        "source_url": "https://www.vladachem.com",
+        "record_urls": [
+          "https://www.vladachem.com/product.php?products=64-17-5"
+        ]
+      },
+      {
+        "name": "abcr GmbH",
+        "n_listings": 4,
+        "registry_ids": [
+          "AB171812",
+          "AB182542",
+          "AB200102",
+          "AB589803"
+        ],
+        "source_url": "http://www.abcr.com/de_en",
+        "record_urls": [
+          "https://abcr.com/de_en/AB171812",
+          "https://abcr.com/de_en/AB182542",
+          "https://abcr.com/de_en/AB200102",
+          "https://abcr.com/de_en/AB589803"
+        ]
+      },
+      {
+        "name": "Cooke Chemical Co., Ltd",
+        "n_listings": 4,
+        "registry_ids": [
+          "A3938912",
+          "S5999649",
+          "S870378",
+          "S965278"
+        ],
+        "source_url": "http://www.cookechem.com/",
+        "record_urls": [
+          "http://www.cookechem.com/Detail/A3938912.htm",
+          "http://www.cookechem.com/Detail/S5999649.htm",
+          "http://www.cookechem.com/Detail/S870378.htm",
+          "http://www.cookechem.com/Detail/S965278.htm"
+        ]
+      },
+      {
+        "name": "Finetech Industry Limited",
+        "n_listings": 4,
+        "registry_ids": [
+          "FT-0625729",
+          "FT-0625731",
+          "FT-0625732",
+          "FT-0668048"
+        ],
+        "source_url": "https://www.finetechnology-ind.com/",
+        "record_urls": [
+          "https://www.finetechnology-ind.com/prod/detail/1516-08-1",
+          "https://www.finetechnology-ind.com/prod/detail/925-93-9",
+          "https://www.finetechnology-ind.com/prod/detail/1759-87-1",
+          "https://www.finetechnology-ind.com/prod/detail/1859-08-1"
+        ]
+      },
+      {
+        "name": "Oakwood Products",
+        "n_listings": 4,
+        "registry_ids": [
+          "098441",
+          "106067",
+          "107222",
+          "110145"
+        ],
+        "source_url": "http://www.oakwoodchemical.com",
+        "record_urls": [
+          "https://oakwoodchemical.com/product.aspx?Number=098441&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=106067&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=107222&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=110145&Referer=PubChem"
+        ]
+      },
+      {
+        "name": "A2B Chem",
+        "n_listings": 3,
+        "registry_ids": [
+          "AE80810",
+          "AF31869",
+          "AX52331"
+        ],
+        "source_url": "https://www.a2bchem.com",
+        "record_urls": [
+          "https://www.a2bchem.com/1624-36-8.html",
+          "https://www.a2bchem.com/22544-43-0.html",
+          "https://www.a2bchem.com/68476-78-8.html"
+        ]
+      },
+      {
+        "name": "Glentham Life Sciences Ltd.",
+        "n_listings": 2,
+        "registry_ids": [
+          "GK6887",
+          "GS6130"
+        ],
+        "source_url": "https://www.glentham.com/en/",
+        "record_urls": [
+          "https://www.glentham.com/en/products/product/GK6887/",
+          "https://www.glentham.com/en/products/product/GS6130/"
+        ]
+      },
+      {
+        "name": "RR Scientific",
+        "n_listings": 2,
+        "registry_ids": [
+          "R000590",
+          "R6496068"
+        ],
+        "source_url": "http://www.rrscientific.com",
+        "record_urls": [
+          "http://www.rrscientific.com/product/info/590",
+          "http://www.rrscientific.com/product/info/6496068"
+        ]
+      },
+      {
+        "name": "10X CHEM",
+        "n_listings": 1,
+        "registry_ids": [
+          "TX01EGDR"
+        ],
+        "source_url": "https://www.10xchem.com/",
+        "record_urls": [
+          "https://www.10xchem.com/prod/68476-78-8"
+        ]
+      }
+    ],
+    "vendor_count": 41,
+    "listing_count": 489,
+    "prices_available": false,
+    "lead_times_available": false,
+    "note_zh": "PubChem 供应商名录通常不提供价格或货期。本工具不会编造价格。",
+    "note_en": "PubChem vendor listings usually do not include prices or lead times. This tool does not invent prices.",
+    "compound_url": "https://pubchem.ncbi.nlm.nih.gov/compound/702",
+    "warnings": [],
+    "vendors_preview": [
+      {
+        "name": "LGC Standards",
+        "n_listings": 196,
+        "registry_ids": [
+          "AC-WH02-015",
+          "AC-WH02-030",
+          "AC-WH20-115",
+          "BCR-651",
+          "BCR-652",
+          "BCR-653",
+          "DRE-C13223000",
+          "DRE-C13223000-10ML"
+        ],
+        "source_url": "https://www.lgcstandards.com/US/en/",
+        "record_urls": [
+          "https://www.lgcstandards.com/US/en/p/AC-WH02-015",
+          "https://www.lgcstandards.com/US/en/p/AC-WH02-030",
+          "https://www.lgcstandards.com/US/en/p/AC-WH20-115",
+          "https://www.lgcstandards.com/US/en/p/BCR-651",
+          "https://www.lgcstandards.com/US/en/p/BCR-652"
+        ],
+        "registry_ids_omitted": 188
+      },
+      {
+        "name": "Sigma-Aldrich",
+        "n_listings": 145,
+        "registry_ids": [
+          "02483_SIAL",
+          "02851_SIAL",
+          "02856_SIGALD",
+          "02857_SIGALD",
+          "02858_SIGALD",
+          "02865_SIAL",
+          "02870_SIGALD",
+          "02882_SIGALD"
+        ],
+        "source_url": "http://www.sigmaaldrich.com",
+        "record_urls": [
+          "https://www.sigmaaldrich.com/catalog/product/sial/02483?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sial/02851?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02856?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02857?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigald/02858?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral"
+        ],
+        "registry_ids_omitted": 137
+      },
+      {
+        "name": "Thermo Fisher Scientific",
+        "n_listings": 44,
+        "registry_ids": [
+          "GID_900000000129884",
+          "GID_900000000185747",
+          "GID_900000000185756",
+          "GID_900000000255397",
+          "GID_900000000302091",
+          "GID_900000000302243",
+          "GID_900000000302244",
+          "GID_900000000302245"
+        ],
+        "source_url": "https://www.thermofisher.com/us/en/home.html",
+        "record_urls": [
+          "https://www.thermofisher.com/order/catalog/product/300680050",
+          "https://www.thermofisher.com/order/catalog/product/166320250",
+          "https://www.thermofisher.com/order/catalog/product/166321000",
+          "https://www.thermofisher.com/order/catalog/product/300680010",
+          "https://www.thermofisher.com/order/catalog/product/611050040"
+        ],
+        "registry_ids_omitted": 36
+      },
+      {
+        "name": "CATO Research Chemicals Inc.",
+        "n_listings": 30,
+        "registry_ids": [
+          "CCEM500540",
+          "CZ-1004",
+          "LCEM501352-WA",
+          "LCEM501353-WA",
+          "LCEM501354-WA",
+          "LCEM501355-WA",
+          "LCEM501356-WA",
+          "LCEM501367-WA"
+        ],
+        "source_url": "https://en.cato-chem.com/",
+        "record_urls": [
+          "https://en.cato-chem.com/goodsDetail/CATO/CCEM500540",
+          "https://en.cato-chem.com/goodsDetail/CATO/CZ-1004",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501352-WA",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501353-WA",
+          "https://en.cato-chem.com/goodsDetail/CATO/LCEM501354-WA"
+        ],
+        "registry_ids_omitted": 22
+      },
+      {
+        "name": "Molekula Group",
+        "n_listings": 13,
+        "registry_ids": [
+          "MOL-24623991",
+          "MOL-90005199",
+          "MOL-90018612",
+          "MOL-90023102",
+          "MOL-90023191",
+          "MOL-90027444",
+          "MOL-90033572",
+          "MOL-90035378"
+        ],
+        "source_url": "https://molekula.com/",
+        "record_urls": [
+          "https://molekula.com/product/ethanol-absolute-molecular-biology-grade",
+          "https://molekula.com/product/ethanol-absolute-p-a",
+          "https://molekula.com/product/ethanol",
+          "https://molekula.com/product/ethanol-denatured",
+          "https://molekula.com/product/industrial-denatured-alcohol-ida-99"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "Alfa Chemistry",
+        "n_listings": 6,
+        "registry_ids": [
+          "ACM64175",
+          "ACM64175-1",
+          "ACMA00008918",
+          "ACMA00027211",
+          "APS005477",
+          "CF-HS-001"
+        ],
+        "source_url": "https://eco.alfa-chemistry.com",
+        "record_urls": [
+          "https://eco.alfa-chemistry.com/product/ethanol-cas-64-17-5-372044.html",
+          "https://materials.alfachemic.com/product/ethanol-99-5-cas-64-17-5-393285.html",
+          "https://lipids.alfa-chemistry.com/product/alcohol-305027.html",
+          "https://eco.alfa-chemistry.com/product/instant-hand-sanitizer-376125.html",
+          "https://reagents.alfa-chemistry.com/product/alcohol-aldehyde-free-59266.html"
+        ]
+      },
+      {
+        "name": "VladaChem",
+        "n_listings": 5,
+        "registry_ids": [
+          "VL142206",
+          "VL280185-1L",
+          "VL281145-100ML",
+          "VL281226-1L",
+          "VL282655-1L"
+        ],
+        "source_url": "https://www.vladachem.com",
+        "record_urls": [
+          "https://www.vladachem.com/product.php?products=64-17-5"
+        ]
+      },
+      {
+        "name": "abcr GmbH",
+        "n_listings": 4,
+        "registry_ids": [
+          "AB171812",
+          "AB182542",
+          "AB200102",
+          "AB589803"
+        ],
+        "source_url": "http://www.abcr.com/de_en",
+        "record_urls": [
+          "https://abcr.com/de_en/AB171812",
+          "https://abcr.com/de_en/AB182542",
+          "https://abcr.com/de_en/AB200102",
+          "https://abcr.com/de_en/AB589803"
+        ]
+      },
+      {
+        "name": "Cooke Chemical Co., Ltd",
+        "n_listings": 4,
+        "registry_ids": [
+          "A3938912",
+          "S5999649",
+          "S870378",
+          "S965278"
+        ],
+        "source_url": "http://www.cookechem.com/",
+        "record_urls": [
+          "http://www.cookechem.com/Detail/A3938912.htm",
+          "http://www.cookechem.com/Detail/S5999649.htm",
+          "http://www.cookechem.com/Detail/S870378.htm",
+          "http://www.cookechem.com/Detail/S965278.htm"
+        ]
+      },
+      {
+        "name": "Finetech Industry Limited",
+        "n_listings": 4,
+        "registry_ids": [
+          "FT-0625729",
+          "FT-0625731",
+          "FT-0625732",
+          "FT-0668048"
+        ],
+        "source_url": "https://www.finetechnology-ind.com/",
+        "record_urls": [
+          "https://www.finetechnology-ind.com/prod/detail/1516-08-1",
+          "https://www.finetechnology-ind.com/prod/detail/925-93-9",
+          "https://www.finetechnology-ind.com/prod/detail/1759-87-1",
+          "https://www.finetechnology-ind.com/prod/detail/1859-08-1"
+        ]
+      },
+      {
+        "name": "Oakwood Products",
+        "n_listings": 4,
+        "registry_ids": [
+          "098441",
+          "106067",
+          "107222",
+          "110145"
+        ],
+        "source_url": "http://www.oakwoodchemical.com",
+        "record_urls": [
+          "https://oakwoodchemical.com/product.aspx?Number=098441&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=106067&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=107222&Referer=PubChem",
+          "https://oakwoodchemical.com/product.aspx?Number=110145&Referer=PubChem"
+        ]
+      },
+      {
+        "name": "A2B Chem",
+        "n_listings": 3,
+        "registry_ids": [
+          "AE80810",
+          "AF31869",
+          "AX52331"
+        ],
+        "source_url": "https://www.a2bchem.com",
+        "record_urls": [
+          "https://www.a2bchem.com/1624-36-8.html",
+          "https://www.a2bchem.com/22544-43-0.html",
+          "https://www.a2bchem.com/68476-78-8.html"
+        ]
+      },
+      {
+        "name": "Glentham Life Sciences Ltd.",
+        "n_listings": 2,
+        "registry_ids": [
+          "GK6887",
+          "GS6130"
+        ],
+        "source_url": "https://www.glentham.com/en/",
+        "record_urls": [
+          "https://www.glentham.com/en/products/product/GK6887/",
+          "https://www.glentham.com/en/products/product/GS6130/"
+        ]
+      },
+      {
+        "name": "RR Scientific",
+        "n_listings": 2,
+        "registry_ids": [
+          "R000590",
+          "R6496068"
+        ],
+        "source_url": "http://www.rrscientific.com",
+        "record_urls": [
+          "http://www.rrscientific.com/product/info/590",
+          "http://www.rrscientific.com/product/info/6496068"
+        ]
+      },
+      {
+        "name": "10X CHEM",
+        "n_listings": 1,
+        "registry_ids": [
+          "TX01EGDR"
+        ],
+        "source_url": "https://www.10xchem.com/",
+        "record_urls": [
+          "https://www.10xchem.com/prod/68476-78-8"
+        ]
+      }
+    ]
+  },
+  "commercial": {
+    "configured": [],
+    "offers": [],
+    "errors": [],
+    "note_zh": "仅在设置了 MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY 时查询。未设置则静默跳过。不会提交询价或订单，也不会在日志中打印密钥。",
+    "note_en": "Queried only when MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY are set. Otherwise skipped silently. No quote forms or orders are submitted; secrets are never printed."
+  },
+  "human_quotes": {
+    "n": 0,
+    "quotes": []
+  },
+  "warnings": [
+    "目录/供应商名录命中不是报价：PubChem 通常不提供价格或货期，本工具也不会编造。"
+  ],
+  "honesty": {
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "disclaimer_zh": "该分数仅基于公开目录或供应商名录命中，没有价格或货期，不是真实报价。",
+    "disclaimer_en": "This score is based on a catalog or vendor-list hit without prices or lead times. It is not a real quote."
+  }
+}

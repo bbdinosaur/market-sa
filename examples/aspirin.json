@@ -1,0 +1,585 @@
+{
+  "molecule": {
+    "input_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "canonical_smiles": "CC(=O)Oc1ccccc1C(=O)O",
+    "inchikey": "BSYNRYMUTXBXSQ-UHFFFAOYSA-N",
+    "formula": "C9H8O4",
+    "mw": 180.159,
+    "rdkit_sa": 1.58
+  },
+  "rdkit_sa": {
+    "score": 1.58,
+    "kind": "computational_heuristic",
+    "label_zh": "RDKit SA Score（计算启发式，不是市场报价）",
+    "label_en": "RDKit SA Score (computational heuristic, not a market quote)",
+    "direction_zh": "1 = 更易合成，10 = 更难合成",
+    "direction_en": "1 = easier to synthesize, 10 = harder"
+  },
+  "market_sa": {
+    "score": 2.57,
+    "confidence": 0.77,
+    "evidence_class": "catalog_listed",
+    "rationale_zh": "公开目录或供应商名录中出现了该分子，但没有价格或货期。给出偏易合成的中间分数，并明确这不是报价。",
+    "rationale_en": "The molecule appears in a public catalog or vendor list, but no price or lead time is available. A mid-easy default is used. This is not a quote. 73 unique PubChem chemical vendors, no prices; score in the 2.5–3.5 band (more vendors → slightly easier / higher confidence).",
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "n_quotes_used": 0,
+    "score_min": null,
+    "score_max": null,
+    "companies": [],
+    "quote_scores": [],
+    "fx_note_zh": null,
+    "fx_note_en": null,
+    "direction_zh": "1 = 更易合成，10 = 更难合成（与 RDKit SA Score 方向一致）",
+    "direction_en": "1 = easier to synthesize, 10 = harder (same direction as RDKit SA Score)",
+    "details": {
+      "catalog_listed_reason": "73 unique PubChem chemical vendors, no prices; score in the 2.5–3.5 band (more vendors → slightly easier / higher confidence)."
+    }
+  },
+  "bloom": {
+    "hits": {
+      "zinc-instock": true,
+      "zinc-instock-mini": true
+    },
+    "errors": {},
+    "descriptions": {
+      "zinc-instock": "ZINC20 instock (9,227,726 mols). FPR of 0.0003. Requires download",
+      "zinc-instock-mini": "ZINC20 instock (9,227,726 mols). FPR of 0.07. Included in package"
+    },
+    "kinds": {
+      "zinc-instock": "purchasability",
+      "zinc-instock-mini": "purchasability"
+    },
+    "any_purchasability_hit": true,
+    "purchasability_hits": [
+      "zinc-instock",
+      "zinc-instock-mini"
+    ],
+    "note_zh": "True 表示可能可购（布隆过滤器有很小的假阳性率），False 表示不在该目录中。SureChEMBL 是专利文献库，不是商店。",
+    "note_en": "True means the molecule may be purchasable (small false-positive rate); False means it is not in that catalog. SureChEMBL is a patent database, not a storefront."
+  },
+  "pubchem": {
+    "ok": true,
+    "cid": 2244,
+    "cids": [
+      2244
+    ],
+    "title": "Aspirin",
+    "iupac_name": "2-acetyloxybenzoic acid",
+    "formula": "C9H8O4",
+    "mw": "180.16",
+    "inchikey": "BSYNRYMUTXBXSQ-UHFFFAOYSA-N",
+    "vendors": [
+      {
+        "name": "Alfa Chemistry",
+        "n_listings": 13,
+        "registry_ids": [
+          "ACM50782",
+          "ACM98201606",
+          "AP50782-B",
+          "APS50782",
+          "APS50782A",
+          "APS50782B",
+          "DS50782",
+          "FFC-AR-50782"
+        ],
+        "source_url": "https://www.alfa-chemistry.com/",
+        "record_urls": [
+          "https://www.alfa-chemistry.com/product/acetylsalicylic-acid-cas-50-78-2-1406.html",
+          "https://www.alfa-chemistry.com/cas_98201-60-6.htm",
+          "https://reagents.alfa-chemistry.com/product/aspirin-acetyl-salicylic-acid-cas-50-78-2-12188.html",
+          "https://reagents.alfa-chemistry.com/product/acetylsalicylic-acid-cas-50-78-2-35240.html",
+          "https://reagents.alfa-chemistry.com/product/aspirin-cas-50-78-2-12187.html"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "LGC Standards",
+        "n_listings": 13,
+        "registry_ids": [
+          "BP 617",
+          "DRE-C10024000",
+          "EPA0200000",
+          "EPY0001460",
+          "JP1003000021",
+          "LGCAMP0133.00-11",
+          "LGCFOR0133.00",
+          "MM0133.00"
+        ],
+        "source_url": "https://www.lgcstandards.com/US/en/",
+        "record_urls": [
+          "https://www.lgcstandards.com/US/en/p/BP 617",
+          "https://www.lgcstandards.com/GB/en/p/DRE-C10024000",
+          "https://www.lgcstandards.com/US/en/p/EPA0200000",
+          "https://www.lgcstandards.com/US/en/p/EPY0001460",
+          "https://www.lgcstandards.com/US/en/p/JP1003000021"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "Sigma-Aldrich",
+        "n_listings": 12,
+        "registry_ids": [
+          "1044006_USP",
+          "239631_ALDRICH",
+          "A0200000_SIAL",
+          "A2093_SIGMA",
+          "A3160_SIGMA",
+          "A5376_SIGMA",
+          "A6810_SIGMA",
+          "BP617_SIAL"
+        ],
+        "source_url": "http://www.sigmaaldrich.com",
+        "record_urls": [
+          "https://www.sigmaaldrich.com/catalog/product/usp/1044006?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/aldrich/239631?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sial/a0200000?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigma/a2093?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigma/a3160?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral"
+        ],
+        "registry_ids_omitted": 4
+      },
+      {
+        "name": "Thermo Fisher Scientific",
+        "n_listings": 6,
+        "registry_ids": [
+          "GID_900000000127929",
+          "GID_900000000175869",
+          "GID_900000000175870",
+          "GID_900000007826423",
+          "GID_900000007826424",
+          "GID_900000007867632"
+        ],
+        "source_url": "https://www.thermofisher.com/us/en/home.html",
+        "record_urls": [
+          "https://www.thermofisher.com/order/catalog/product/158180025",
+          "https://www.thermofisher.com/order/catalog/product/158180500",
+          "https://www.thermofisher.com/order/catalog/product/158185000",
+          "https://www.thermofisher.com/order/catalog/product/A12488.0E",
+          "https://www.thermofisher.com/order/catalog/product/A12488.22"
+        ]
+      },
+      {
+        "name": "Biorbyt",
+        "n_listings": 3,
+        "registry_ids": [
+          "orb1224891",
+          "orb1311035",
+          "orb3025904"
+        ],
+        "source_url": "https://www.biorbyt.com/",
+        "record_urls": [
+          "https://www.biorbyt.com/products/acetylsalicylic-acid-orb1224891",
+          "https://www.biorbyt.com/products/aspirin-orb1311035",
+          "https://www.biorbyt.com/aspirin-standard-orb3025904.html"
+        ]
+      },
+      {
+        "name": "BOC Sciences",
+        "n_listings": 3,
+        "registry_ids": [
+          "50-78-2",
+          "98201-60-6",
+          "NP2660"
+        ],
+        "source_url": "https://antiviral.bocsci.com/",
+        "record_urls": [
+          "https://antiviral.bocsci.com/product/aspirin-cas-50-78-2-93285.html",
+          "https://www.bocsci.com/acetosal-cas-98201-60-6-item-67524.html",
+          "https://natuprod.bocsci.com/product/aspirin-cas-50-78-2-93285.html"
+        ]
+      },
+      {
+        "name": "CATO Research Chemicals Inc.",
+        "n_listings": 3,
+        "registry_ids": [
+          "C1343073",
+          "C4X-1408",
+          "CCAD300048"
+        ],
+        "source_url": "https://en.cato-chem.com/",
+        "record_urls": [
+          "https://en.cato-chem.com/goodsDetail/CATO/C1343073",
+          "https://en.cato-chem.com/goodsDetail/CATO/C4X-1408",
+          "https://en.cato-chem.com/goodsDetail/CATO/CCAD300048"
+        ]
+      },
+      {
+        "name": "Enamine",
+        "n_listings": 3,
+        "registry_ids": [
+          "EBC-03525",
+          "EN300-19606",
+          "Z104474430"
+        ],
+        "source_url": "https://enaminestore.com/",
+        "record_urls": [
+          "https://ebc.enamine.net/molecule-product/EBC-03525",
+          "https://www.enaminestore.com/catalog/EN300-19606",
+          "https://www.enaminestore.com/catalog/Z104474430"
+        ]
+      },
+      {
+        "name": "AbaChemScene",
+        "n_listings": 2,
+        "registry_ids": [
+          "CS-0694916",
+          "CS-2001"
+        ],
+        "source_url": "https://www.chemscene.com/",
+        "record_urls": [
+          "http://www.chemscene.com/50-78-2.html",
+          "https://www.chemscene.com/50-78-2.html"
+        ]
+      },
+      {
+        "name": "Aladdin Scientific",
+        "n_listings": 2,
+        "registry_ids": [
+          "A104180",
+          "A118582"
+        ],
+        "source_url": "https://www.aladdinsci.com",
+        "record_urls": [
+          "https://www.aladdinsci.com/acetylsalicylic-acid-bioactive-small-molecules-by-aladdin-scientific-a104180.html",
+          "https://www.aladdinsci.com/acetylsalicylic-acid-bioactive-small-molecules-by-aladdin-scientific-a118582.html"
+        ]
+      },
+      {
+        "name": "Angene Chemical",
+        "n_listings": 2,
+        "registry_ids": [
+          "AG00I8X2",
+          "AGN-PC-0WACEM"
+        ],
+        "source_url": "https://www.angenechemical.com/",
+        "record_urls": [
+          "https://www.angenesci.com/productshow/AG00I8X2.html",
+          "http://www.angenechemical.com/productshow/AGN-PC-0WACEM.html"
+        ]
+      },
+      {
+        "name": "Debye Scientific Co., Ltd",
+        "n_listings": 2,
+        "registry_ids": [
+          "DA-61272",
+          "DS-017139"
+        ],
+        "source_url": null,
+        "record_urls": [
+          "http://www.debyesci.com/cas_50-78-2",
+          "http://www.debyesci.com/cas_59096-14-9.html"
+        ]
+      },
+      {
+        "name": "Finetech Industry Limited",
+        "n_listings": 2,
+        "registry_ids": [
+          "FT-0655181",
+          "FT-0661360"
+        ],
+        "source_url": "https://www.finetechnology-ind.com/",
+        "record_urls": [
+          "https://www.finetechnology-ind.com/prod/detail/50-78-2",
+          "https://www.finetechnology-ind.com/prod/detail/97781-16-3"
+        ]
+      },
+      {
+        "name": "Glentham Life Sciences Ltd.",
+        "n_listings": 2,
+        "registry_ids": [
+          "GL0865",
+          "GL2912"
+        ],
+        "source_url": "https://www.glentham.com/en/",
+        "record_urls": [
+          "https://www.glentham.com/en/products/product/GL0865/",
+          "https://www.glentham.com/en/products/product/GL2912/"
+        ]
+      },
+      {
+        "name": "MedChemexpress MCE",
+        "n_listings": 2,
+        "registry_ids": [
+          "HY-14654",
+          "HY-14654R"
+        ],
+        "source_url": "https://www.medchemexpress.com/",
+        "record_urls": [
+          "https://www.medchemexpress.com/aspirin.html",
+          "https://www.medchemexpress.com/aspirin-standard.html"
+        ]
+      }
+    ],
+    "vendor_count": 73,
+    "listing_count": 131,
+    "prices_available": false,
+    "lead_times_available": false,
+    "note_zh": "PubChem 供应商名录通常不提供价格或货期。本工具不会编造价格。",
+    "note_en": "PubChem vendor listings usually do not include prices or lead times. This tool does not invent prices.",
+    "compound_url": "https://pubchem.ncbi.nlm.nih.gov/compound/2244",
+    "warnings": [],
+    "vendors_preview": [
+      {
+        "name": "Alfa Chemistry",
+        "n_listings": 13,
+        "registry_ids": [
+          "ACM50782",
+          "ACM98201606",
+          "AP50782-B",
+          "APS50782",
+          "APS50782A",
+          "APS50782B",
+          "DS50782",
+          "FFC-AR-50782"
+        ],
+        "source_url": "https://www.alfa-chemistry.com/",
+        "record_urls": [
+          "https://www.alfa-chemistry.com/product/acetylsalicylic-acid-cas-50-78-2-1406.html",
+          "https://www.alfa-chemistry.com/cas_98201-60-6.htm",
+          "https://reagents.alfa-chemistry.com/product/aspirin-acetyl-salicylic-acid-cas-50-78-2-12188.html",
+          "https://reagents.alfa-chemistry.com/product/acetylsalicylic-acid-cas-50-78-2-35240.html",
+          "https://reagents.alfa-chemistry.com/product/aspirin-cas-50-78-2-12187.html"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "LGC Standards",
+        "n_listings": 13,
+        "registry_ids": [
+          "BP 617",
+          "DRE-C10024000",
+          "EPA0200000",
+          "EPY0001460",
+          "JP1003000021",
+          "LGCAMP0133.00-11",
+          "LGCFOR0133.00",
+          "MM0133.00"
+        ],
+        "source_url": "https://www.lgcstandards.com/US/en/",
+        "record_urls": [
+          "https://www.lgcstandards.com/US/en/p/BP 617",
+          "https://www.lgcstandards.com/GB/en/p/DRE-C10024000",
+          "https://www.lgcstandards.com/US/en/p/EPA0200000",
+          "https://www.lgcstandards.com/US/en/p/EPY0001460",
+          "https://www.lgcstandards.com/US/en/p/JP1003000021"
+        ],
+        "registry_ids_omitted": 5
+      },
+      {
+        "name": "Sigma-Aldrich",
+        "n_listings": 12,
+        "registry_ids": [
+          "1044006_USP",
+          "239631_ALDRICH",
+          "A0200000_SIAL",
+          "A2093_SIGMA",
+          "A3160_SIGMA",
+          "A5376_SIGMA",
+          "A6810_SIGMA",
+          "BP617_SIAL"
+        ],
+        "source_url": "http://www.sigmaaldrich.com",
+        "record_urls": [
+          "https://www.sigmaaldrich.com/catalog/product/usp/1044006?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/aldrich/239631?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sial/a0200000?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigma/a2093?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral",
+          "https://www.sigmaaldrich.com/catalog/product/sigma/a3160?utm_source=pubchem&utm_campaign=pubchem_2017&utm_medium=referral"
+        ],
+        "registry_ids_omitted": 4
+      },
+      {
+        "name": "Thermo Fisher Scientific",
+        "n_listings": 6,
+        "registry_ids": [
+          "GID_900000000127929",
+          "GID_900000000175869",
+          "GID_900000000175870",
+          "GID_900000007826423",
+          "GID_900000007826424",
+          "GID_900000007867632"
+        ],
+        "source_url": "https://www.thermofisher.com/us/en/home.html",
+        "record_urls": [
+          "https://www.thermofisher.com/order/catalog/product/158180025",
+          "https://www.thermofisher.com/order/catalog/product/158180500",
+          "https://www.thermofisher.com/order/catalog/product/158185000",
+          "https://www.thermofisher.com/order/catalog/product/A12488.0E",
+          "https://www.thermofisher.com/order/catalog/product/A12488.22"
+        ]
+      },
+      {
+        "name": "Biorbyt",
+        "n_listings": 3,
+        "registry_ids": [
+          "orb1224891",
+          "orb1311035",
+          "orb3025904"
+        ],
+        "source_url": "https://www.biorbyt.com/",
+        "record_urls": [
+          "https://www.biorbyt.com/products/acetylsalicylic-acid-orb1224891",
+          "https://www.biorbyt.com/products/aspirin-orb1311035",
+          "https://www.biorbyt.com/aspirin-standard-orb3025904.html"
+        ]
+      },
+      {
+        "name": "BOC Sciences",
+        "n_listings": 3,
+        "registry_ids": [
+          "50-78-2",
+          "98201-60-6",
+          "NP2660"
+        ],
+        "source_url": "https://antiviral.bocsci.com/",
+        "record_urls": [
+          "https://antiviral.bocsci.com/product/aspirin-cas-50-78-2-93285.html",
+          "https://www.bocsci.com/acetosal-cas-98201-60-6-item-67524.html",
+          "https://natuprod.bocsci.com/product/aspirin-cas-50-78-2-93285.html"
+        ]
+      },
+      {
+        "name": "CATO Research Chemicals Inc.",
+        "n_listings": 3,
+        "registry_ids": [
+          "C1343073",
+          "C4X-1408",
+          "CCAD300048"
+        ],
+        "source_url": "https://en.cato-chem.com/",
+        "record_urls": [
+          "https://en.cato-chem.com/goodsDetail/CATO/C1343073",
+          "https://en.cato-chem.com/goodsDetail/CATO/C4X-1408",
+          "https://en.cato-chem.com/goodsDetail/CATO/CCAD300048"
+        ]
+      },
+      {
+        "name": "Enamine",
+        "n_listings": 3,
+        "registry_ids": [
+          "EBC-03525",
+          "EN300-19606",
+          "Z104474430"
+        ],
+        "source_url": "https://enaminestore.com/",
+        "record_urls": [
+          "https://ebc.enamine.net/molecule-product/EBC-03525",
+          "https://www.enaminestore.com/catalog/EN300-19606",
+          "https://www.enaminestore.com/catalog/Z104474430"
+        ]
+      },
+      {
+        "name": "AbaChemScene",
+        "n_listings": 2,
+        "registry_ids": [
+          "CS-0694916",
+          "CS-2001"
+        ],
+        "source_url": "https://www.chemscene.com/",
+        "record_urls": [
+          "http://www.chemscene.com/50-78-2.html",
+          "https://www.chemscene.com/50-78-2.html"
+        ]
+      },
+      {
+        "name": "Aladdin Scientific",
+        "n_listings": 2,
+        "registry_ids": [
+          "A104180",
+          "A118582"
+        ],
+        "source_url": "https://www.aladdinsci.com",
+        "record_urls": [
+          "https://www.aladdinsci.com/acetylsalicylic-acid-bioactive-small-molecules-by-aladdin-scientific-a104180.html",
+          "https://www.aladdinsci.com/acetylsalicylic-acid-bioactive-small-molecules-by-aladdin-scientific-a118582.html"
+        ]
+      },
+      {
+        "name": "Angene Chemical",
+        "n_listings": 2,
+        "registry_ids": [
+          "AG00I8X2",
+          "AGN-PC-0WACEM"
+        ],
+        "source_url": "https://www.angenechemical.com/",
+        "record_urls": [
+          "https://www.angenesci.com/productshow/AG00I8X2.html",
+          "http://www.angenechemical.com/productshow/AGN-PC-0WACEM.html"
+        ]
+      },
+      {
+        "name": "Debye Scientific Co., Ltd",
+        "n_listings": 2,
+        "registry_ids": [
+          "DA-61272",
+          "DS-017139"
+        ],
+        "source_url": null,
+        "record_urls": [
+          "http://www.debyesci.com/cas_50-78-2",
+          "http://www.debyesci.com/cas_59096-14-9.html"
+        ]
+      },
+      {
+        "name": "Finetech Industry Limited",
+        "n_listings": 2,
+        "registry_ids": [
+          "FT-0655181",
+          "FT-0661360"
+        ],
+        "source_url": "https://www.finetechnology-ind.com/",
+        "record_urls": [
+          "https://www.finetechnology-ind.com/prod/detail/50-78-2",
+          "https://www.finetechnology-ind.com/prod/detail/97781-16-3"
+        ]
+      },
+      {
+        "name": "Glentham Life Sciences Ltd.",
+        "n_listings": 2,
+        "registry_ids": [
+          "GL0865",
+          "GL2912"
+        ],
+        "source_url": "https://www.glentham.com/en/",
+        "record_urls": [
+          "https://www.glentham.com/en/products/product/GL0865/",
+          "https://www.glentham.com/en/products/product/GL2912/"
+        ]
+      },
+      {
+        "name": "MedChemexpress MCE",
+        "n_listings": 2,
+        "registry_ids": [
+          "HY-14654",
+          "HY-14654R"
+        ],
+        "source_url": "https://www.medchemexpress.com/",
+        "record_urls": [
+          "https://www.medchemexpress.com/aspirin.html",
+          "https://www.medchemexpress.com/aspirin-standard.html"
+        ]
+      }
+    ]
+  },
+  "commercial": {
+    "configured": [],
+    "offers": [],
+    "errors": [],
+    "note_zh": "仅在设置了 MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY 时查询。未设置则静默跳过。不会提交询价或订单，也不会在日志中打印密钥。",
+    "note_en": "Queried only when MOLPORT_API_KEY / MCULE_API_TOKEN / CHEMSPACE_API_KEY are set. Otherwise skipped silently. No quote forms or orders are submitted; secrets are never printed."
+  },
+  "human_quotes": {
+    "n": 0,
+    "quotes": []
+  },
+  "warnings": [
+    "目录/供应商名录命中不是报价：PubChem 通常不提供价格或货期，本工具也不会编造。"
+  ],
+  "honesty": {
+    "is_real_market_quote": false,
+    "is_custom_synthesis_quote": false,
+    "disclaimer_zh": "该分数仅基于公开目录或供应商名录命中，没有价格或货期，不是真实报价。",
+    "disclaimer_en": "This score is based on a catalog or vendor-list hit without prices or lead times. It is not a real quote."
+  }
+}
